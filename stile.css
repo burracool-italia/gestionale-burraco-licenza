@@ -1,0 +1,248 @@
+/* Pagine «Licenza d'uso» di Gestionale Burraco: modulo di richiesta, condizioni, privacy. */
+:root {
+  --blu: #154B8C;
+  --blu-scuro: #0E3564;
+  --blu-chiaro: #E8F0FA;
+  --arancio: #E8890C;
+  --arancio-scuro: #B96A00;
+  --inchiostro: #16232E;
+  --grigio: #5B6875;
+  --bordo: #CBD5E1;
+  --sfondo: #F3F6FA;
+  --carta: #FFFFFF;
+  --rosso: #B3261E;
+  --verde: #1E7B34;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--sfondo);
+  color: var(--inchiostro);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+a { color: var(--blu); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--arancio);
+  outline-offset: 2px;
+}
+
+/* ── testata ── */
+.testata {
+  background: var(--blu);
+  color: #fff;
+  padding: 28px 16px 30px;
+  border-bottom: 6px solid var(--arancio);
+}
+.testata .dentro { max-width: 820px; margin: 0 auto; }
+.testata .marchio {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #FFD9A0;
+  margin: 0 0 6px;
+}
+.testata h1 { font-size: 32px; line-height: 1.15; margin: 0 0 8px; font-weight: 800; }
+.testata p { margin: 0; font-size: 18px; color: #DCE8F7; max-width: 640px; }
+
+main { max-width: 820px; margin: 0 auto; padding: 22px 16px 40px; }
+
+/* ── riquadri ── */
+.riquadro {
+  background: var(--carta);
+  border: 1px solid var(--bordo);
+  border-radius: 14px;
+  padding: 22px 22px 24px;
+  margin: 0 0 18px;
+}
+.riquadro h2 {
+  font-size: 21px;
+  margin: 0 0 4px;
+  color: var(--blu-scuro);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.riquadro h2 .passo {
+  flex: none;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--arancio);
+  color: #fff;
+  font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.riquadro .sotto { margin: 0 0 16px; color: var(--grigio); font-size: 15.5px; }
+.riquadro ul { margin: 8px 0 0; padding-left: 22px; }
+.riquadro li { margin: 3px 0; }
+
+/* ── scelta della licenza ── */
+.licenze { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.licenza { position: relative; display: block; }
+.licenza input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.licenza .scheda {
+  display: block;
+  height: 100%;
+  border: 2px solid var(--bordo);
+  border-radius: 12px;
+  padding: 16px 14px 14px;
+  background: #fff;
+  text-align: center;
+  transition: border-color .12s, background .12s;
+}
+.licenza .nome { font-weight: 700; font-size: 17px; display: block; }
+.licenza .durata { color: var(--grigio); font-size: 14.5px; display: block; }
+.licenza .prezzo { display: block; font-size: 30px; font-weight: 800; color: var(--blu); margin: 8px 0 2px; line-height: 1.1; }
+.licenza .nota { display: block; font-size: 13.5px; color: var(--grigio); }
+.licenza input:hover + .scheda { border-color: var(--blu); }
+.licenza input:checked + .scheda { border-color: var(--blu); background: var(--blu-chiaro); box-shadow: inset 0 0 0 1px var(--blu); }
+.licenza input:checked + .scheda .nome::before { content: "✓ "; color: var(--blu); }
+.licenza input:focus-visible + .scheda { outline: 3px solid var(--arancio); outline-offset: 2px; }
+
+/* ── campi ── */
+.campi { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px 14px; }
+.campo { grid-column: span 6; min-width: 0; }
+.campo.meta { grid-column: span 3; }
+.campo.terzo { grid-column: span 2; }
+.campo.stretto { grid-column: span 1; }
+.campo.largo4 { grid-column: span 4; }
+.campo.largo3 { grid-column: span 3; }
+label.etichetta, .etichetta { display: block; font-weight: 600; font-size: 15.5px; margin: 0 0 5px; }
+.facoltativo { font-weight: 400; color: var(--grigio); }
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  padding: 11px 12px;
+  border: 1.5px solid var(--bordo);
+  border-radius: 9px;
+  background: #fff;
+}
+textarea { min-height: 84px; resize: vertical; }
+input:hover, textarea:hover { border-color: #94A3B8; }
+.aiuto { font-size: 14px; color: var(--grigio); margin: 5px 0 0; }
+.campo.sbagliato input, .campo.sbagliato textarea { border-color: var(--rosso); background: #FFF6F5; }
+.errore-campo { display: none; color: var(--rosso); font-size: 14px; margin: 5px 0 0; font-weight: 600; }
+.campo.sbagliato .errore-campo, .gruppo.sbagliato .errore-campo { display: block; }
+
+.scelte { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 4px; }
+.scelta { position: relative; }
+.scelta input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.scelta span {
+  display: block;
+  border: 1.5px solid var(--bordo);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 15.5px;
+  background: #fff;
+}
+.scelta input:hover + span { border-color: var(--blu); }
+.scelta input:checked + span { background: var(--blu); border-color: var(--blu); color: #fff; font-weight: 600; }
+.scelta input:focus-visible + span { outline: 3px solid var(--arancio); outline-offset: 2px; }
+
+.nascosto { display: none !important; }
+.trappola { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* ── conferme ── */
+.conferma { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-top: 1px solid #E5EAF1; }
+.conferma:first-of-type { border-top: none; }
+.conferma input { flex: none; width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--blu); cursor: pointer; }
+.conferma label { font-size: 15.5px; cursor: pointer; }
+.gruppo.sbagliato .conferma input:not(:checked) { outline: 2px solid var(--rosso); outline-offset: 2px; }
+
+/* ── riepilogo e invio ── */
+.riepilogo {
+  background: var(--blu-chiaro);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 16px 0 16px;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+}
+.riepilogo .cosa { font-weight: 700; }
+.riepilogo .quanto { font-size: 24px; font-weight: 800; color: var(--blu-scuro); }
+.riepilogo .piccolo { flex-basis: 100%; font-size: 14px; color: var(--grigio); }
+
+.pulsante {
+  display: inline-block;
+  font: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  background: var(--arancio-scuro);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.pulsante:hover { background: #9C5900; }
+.pulsante[disabled] { opacity: .6; cursor: wait; }
+.pulsante.secondario { background: #fff; color: var(--blu); border: 1.5px solid var(--blu); font-size: 16px; padding: 10px 18px; }
+.pulsante.secondario:hover { background: var(--blu-chiaro); }
+
+.avviso { border-radius: 12px; padding: 14px 18px; margin: 0 0 16px; font-size: 16px; }
+.avviso.errore { background: #FDECEA; border: 1px solid #F1B7B2; color: #7A1A14; }
+.avviso.errore a { color: #7A1A14; font-weight: 700; }
+.avviso p { margin: 0 0 8px; }
+.avviso p:last-child { margin-bottom: 0; }
+
+/* ── conferma dopo l'invio ── */
+.fatto:focus { outline: none; }
+.fatto h2 { color: var(--verde); }
+.fatto h3 { margin: 18px 0 0; font-size: 18px; }
+.fatto .numero { font-size: 19px; }
+table.dati { border-collapse: collapse; width: 100%; margin: 12px 0 4px; font-size: 16px; }
+table.dati th, table.dati td { text-align: left; vertical-align: top; padding: 7px 8px; border-bottom: 1px solid #E5EAF1; }
+table.dati th { width: 38%; color: var(--grigio); font-weight: 600; }
+.passi { margin: 8px 0 0; padding-left: 22px; }
+.passi li { margin: 6px 0; }
+.azioni { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ── testi legali ── */
+.testo h2 { font-size: 20px; margin: 26px 0 6px; color: var(--blu-scuro); display: block; }
+.testo h2:first-child { margin-top: 0; }
+.testo p, .testo li { font-size: 16.5px; }
+.testo p { margin: 8px 0; }
+.testo ol, .testo ul { margin: 6px 0; padding-left: 24px; }
+.testo .versione { color: var(--grigio); font-size: 15px; }
+.testo blockquote {
+  margin: 12px 0; padding: 12px 16px;
+  background: var(--sfondo); border: 1px dashed var(--bordo); border-radius: 10px; font-size: 15.5px;
+}
+.torna { display: inline-block; margin: 0 0 14px; font-weight: 600; }
+
+.da-completare { background: #FFF1A8; padding: 0 4px; border-radius: 4px; font-weight: 600; }
+
+/* ── piede ── */
+.piede { max-width: 820px; margin: 0 auto; padding: 0 16px 40px; color: var(--grigio); font-size: 14.5px; }
+.piede p { margin: 4px 0; }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .testata h1 { font-size: 26px; }
+  .licenze { grid-template-columns: 1fr; }
+  .licenza .scheda { text-align: left; display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: center; }
+  .licenza .prezzo { grid-row: 1 / span 3; grid-column: 2; margin: 0; font-size: 26px; }
+  .campo.meta, .campo.terzo, .campo.stretto, .campo.largo4, .campo.largo3 { grid-column: span 6; }
+  .campo.cap { grid-column: span 2; }
+  .campo.comune { grid-column: span 4; }
+  .riquadro { padding: 18px 16px 20px; }
+  table.dati th { width: 42%; }
+}
+
+@media print {
+  body { background: #fff; font-size: 12pt; }
+  .testata { background: #fff; color: #000; border-bottom: 2px solid #000; padding: 0 0 8px; }
+  .testata .marchio { color: #000; }
+  .testata p { color: #000; }
+  .non-stampare, .azioni, .piede a { display: none !important; }
+  .riquadro { border: none; padding: 0; }
+  main { padding: 12px 0; }
+}
